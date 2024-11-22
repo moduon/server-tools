@@ -22,7 +22,6 @@ class TestXMLRPC(common.HttpCase):
         self.env["ir.model"]._get("res.partner").rpc_config_edit = json.dumps(
             {"disable": val}
         )
-        self.env["ir.model"].flush()
 
     def tearDown(self):
         klass = type(self.env["res.partner"])

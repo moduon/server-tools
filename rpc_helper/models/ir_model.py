@@ -20,7 +20,6 @@ class IrModel(models.Model):
         "wrapped by a dict with key `disable`. "
         "Eg: {'disable': ['search', 'do_this']}"
         "To disable all methods, use `{'disable: ['all']}`",
-        inverse="_inverse_rpc_config_edit",
     )
 
     @api.depends("rpc_config_edit")
@@ -28,7 +27,8 @@ class IrModel(models.Model):
         for rec in self:
             rec.rpc_config = rec._load_rpc_config()
 
-    def _inverse_rpc_config_edit(self):
+    @api.onchange("rpc_config_edit")
+    def _onchange_rpc_config_edit(self):
         for rec in self:
             # Make sure options_edit is always readable
             rec.rpc_config_edit = json.dumps(
