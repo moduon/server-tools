@@ -57,6 +57,7 @@ setuptools.setup(
         'odoo12-addon-nsca_client',
         'odoo12-addon-onchange_helper',
         'odoo12-addon-profiler',
+        'odoo12-addon-rpc_helper',
         'odoo12-addon-scheduler_error_mailer',
         'odoo12-addon-sentry',
         'odoo12-addon-slow_statement_logger',
